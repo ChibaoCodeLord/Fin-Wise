@@ -8,7 +8,7 @@ class NeoJarProgressCard extends StatelessWidget {
   final String name;
   final double budget;
   final double spent;
-  final IconData icon;
+  final dynamic icon;
   final Color iconBg;
   final Color iconFg;
   final int transactionCount;

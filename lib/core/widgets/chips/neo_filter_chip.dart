@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_styles.dart';
 
@@ -6,7 +7,7 @@ class NeoFilterChip extends StatelessWidget {
   final String label;
   final bool isSelected;
   final VoidCallback onTap;
-  final IconData? icon;
+  final dynamic icon;
 
   const NeoFilterChip({
     super.key,
@@ -18,6 +19,17 @@ class NeoFilterChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final iconColor = isSelected ? AppColors.surfaceWhite : AppColors.textSecondary;
+
+    Widget? iconWidget;
+    if (icon != null) {
+      if (icon is IconData) {
+        iconWidget = Icon(icon as IconData, size: 15, color: iconColor);
+      } else {
+        iconWidget = HugeIcon(icon: icon, size: 15, color: iconColor);
+      }
+    }
+
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
@@ -30,12 +42,8 @@ class NeoFilterChip extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (icon != null) ...[
-              Icon(
-                icon,
-                size: 15,
-                color: isSelected ? AppColors.surfaceWhite : AppColors.textSecondary,
-              ),
+            if (iconWidget != null) ...[
+              iconWidget,
               const SizedBox(width: 6),
             ],
             Text(
