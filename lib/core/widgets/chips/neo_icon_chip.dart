@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_styles.dart';
 
 class NeoIconChip extends StatelessWidget {
-  final IconData icon;
+  final dynamic icon;
   final Color? backgroundColor;
   final Color? iconColor;
   final double size;
@@ -25,6 +26,21 @@ class NeoIconChip extends StatelessWidget {
     final bg = backgroundColor ?? AppColors.iconTintBg;
     final fg = iconColor ?? AppColors.iconTintFg;
 
+    Widget iconWidget;
+    if (icon is IconData) {
+      iconWidget = Icon(
+        icon as IconData,
+        color: fg,
+        size: iconSize,
+      );
+    } else {
+      iconWidget = HugeIcon(
+        icon: icon,
+        color: fg,
+        size: iconSize,
+      );
+    }
+
     return Container(
       width: size,
       height: size,
@@ -33,11 +49,7 @@ class NeoIconChip extends StatelessWidget {
         borderRadius: BorderRadius.circular(borderRadius),
       ),
       child: Center(
-        child: Icon(
-          icon,
-          color: fg,
-          size: iconSize,
-        ),
+        child: iconWidget,
       ),
     );
   }

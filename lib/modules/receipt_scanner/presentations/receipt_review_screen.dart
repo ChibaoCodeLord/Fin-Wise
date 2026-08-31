@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
@@ -371,11 +372,17 @@ class _ReceiptReviewScreenState extends State<ReceiptReviewScreen> {
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Icon(
-                                cat.icon,
-                                size: 16,
-                                color: isSelected ? AppColors.surfaceWhite : cat.foregroundColor,
-                              ),
+                              cat.icon is IconData
+                                  ? Icon(
+                                      cat.icon as IconData,
+                                      size: 16,
+                                      color: isSelected ? AppColors.surfaceWhite : cat.foregroundColor,
+                                    )
+                                  : HugeIcon(
+                                      icon: cat.icon,
+                                      size: 16,
+                                      color: isSelected ? AppColors.surfaceWhite : cat.foregroundColor,
+                                    ),
                               const SizedBox(width: 6),
                               Text(
                                 cat.name,

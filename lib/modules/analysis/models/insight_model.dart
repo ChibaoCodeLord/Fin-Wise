@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 
 enum InsightType { alert, tip, positive }
 
@@ -7,7 +7,7 @@ class InsightModel {
   final String title;
   final String description;
   final InsightType type;
-  final IconData icon;
+  final dynamic icon;
   final DateTime createdAt;
 
   const InsightModel({
@@ -25,7 +25,7 @@ class InsightModel {
           title: 'Chi tiêu Ăn uống tăng 21%',
           description: 'So với cùng kỳ tháng trước, bạn đã chi nhiều hơn cho các bữa ăn ngoài và cà phê.',
           type: InsightType.alert,
-          icon: Icons.trending_up_rounded,
+          icon: HugeIcons.strokeRoundedAnalyticsUp,
           createdAt: DateTime.now(),
         ),
         InsightModel(
@@ -33,7 +33,7 @@ class InsightModel {
           title: 'Hũ Mua sắm sắp chạm 85%',
           description: 'Hũ Mua sắm chỉ còn 250.000đ trong khi còn 12 ngày nữa mới hết chu kỳ tháng.',
           type: InsightType.alert,
-          icon: Icons.warning_amber_rounded,
+          icon: HugeIcons.strokeRoundedAlertCircle,
           createdAt: DateTime.now().subtract(const Duration(hours: 4)),
         ),
         InsightModel(
@@ -41,7 +41,7 @@ class InsightModel {
           title: 'Tiết kiệm tốt ở Hũ Đi lại',
           description: 'Bạn mới sử dụng 52% ngân sách đi lại, giữ vững phong độ này nhé!',
           type: InsightType.positive,
-          icon: Icons.savings_outlined,
+          icon: HugeIcons.strokeRoundedPiggyBank,
           createdAt: DateTime.now().subtract(const Duration(days: 1)),
         ),
       ];

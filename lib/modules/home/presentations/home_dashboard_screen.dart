@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../core/utils/date_formatter.dart';
@@ -167,7 +168,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                           title: 'Internet – FiberLink',
                           subtitle: 'Due Sep 18 · 2 days left',
                           amount: 10.99,
-                          icon: Icons.wifi_rounded,
+                          icon: HugeIcons.strokeRoundedWifi01,
                           iconBg: const Color(0xFFE0F2FE),
                           iconFg: const Color(0xFF0284C7),
                           isDollar: true,
@@ -177,7 +178,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                           title: 'Electricity – PowerGrid',
                           subtitle: 'Due Sep 18 · 2 days left',
                           amount: 120.75,
-                          icon: Icons.bolt_rounded,
+                          icon: HugeIcons.strokeRoundedFlash,
                           iconBg: const Color(0xFFEFF6FF),
                           iconFg: const Color(0xFF2563EB),
                           isDollar: true,
@@ -187,7 +188,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                           title: 'Water – AquaPure',
                           subtitle: 'Due Sep 22 · 6 days left',
                           amount: 45.00,
-                          icon: Icons.water_drop_rounded,
+                          icon: HugeIcons.strokeRoundedWaterEnergy,
                           iconBg: const Color(0xFFE0F7FA),
                           iconFg: const Color(0xFF00ACC1),
                           isDollar: true,
@@ -272,11 +273,15 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
     required String title,
     required String subtitle,
     required double amount,
-    required IconData icon,
+    required dynamic icon,
     required Color iconBg,
     required Color iconFg,
     bool isDollar = false,
   }) {
+    Widget iconWidget = icon is IconData
+        ? Icon(icon, color: iconFg, size: 22)
+        : HugeIcon(icon: icon, color: iconFg, size: 22);
+
     return InkWell(
       onTap: () {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -300,7 +305,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                 borderRadius: BorderRadius.circular(14),
               ),
               child: Center(
-                child: Icon(icon, color: iconFg, size: 22),
+                child: iconWidget,
               ),
             ),
             const SizedBox(width: 14),

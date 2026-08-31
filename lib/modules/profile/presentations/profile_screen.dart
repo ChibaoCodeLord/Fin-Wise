@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
 import '../../../core/utils/currency_formatter.dart';
@@ -172,7 +173,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Column(
                     children: [
                       _buildNavTile(
-                        icon: Icons.inventory_2_outlined,
+                        icon: HugeIcons.strokeRoundedShoppingBag01,
                         title: 'Lịch sử mua sắm & Sản phẩm OCR',
                         subtitle: 'Xem chi tiết các mặt hàng đã bóc tách từ hoá đơn',
                         onTap: () {
@@ -185,7 +186,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       const Divider(height: 1, color: AppColors.borderHairline),
                       _buildNavTile(
-                        icon: Icons.file_download_outlined,
+                        icon: HugeIcons.strokeRoundedFileDownload,
                         title: 'Xuất dữ liệu thu chi (Excel/PDF)',
                         subtitle: 'Xuất báo cáo thuế & sao kê định dạng chuẩn',
                         onTap: () {
@@ -277,11 +278,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _buildNavTile({
-    required IconData icon,
+    required dynamic icon,
     required String title,
     required String subtitle,
     required VoidCallback onTap,
   }) {
+    Widget iconWidget = icon is IconData
+        ? Icon(icon, color: AppColors.iconTintFg, size: 20)
+        : HugeIcon(icon: icon, color: AppColors.iconTintFg, size: 20);
+
     return ListTile(
       leading: Container(
         padding: const EdgeInsets.all(8),
@@ -289,7 +294,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           color: AppColors.iconTintBg,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Icon(icon, color: AppColors.iconTintFg, size: 20),
+        child: iconWidget,
       ),
       title: Text(title, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14)),
       subtitle: Text(subtitle, style: const TextStyle(fontSize: 12, color: AppColors.textSecondary)),

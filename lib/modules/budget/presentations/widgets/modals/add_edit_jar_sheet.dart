@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/widgets/buttons/neo_pill_button.dart';
@@ -38,17 +39,19 @@ class _AddEditJarSheetState extends State<AddEditJarSheet> {
   JarPeriod _period = JarPeriod.monthly;
   int _selectedIconIndex = 0;
 
-  final List<IconData> _icons = [
-    Icons.fastfood_outlined,
-    Icons.shopping_bag_outlined,
-    Icons.directions_car_outlined,
-    Icons.sports_esports_outlined,
-    Icons.face_retouching_natural_outlined,
-    Icons.home_outlined,
-    Icons.flight_takeoff_outlined,
-    Icons.school_outlined,
-    Icons.medical_services_outlined,
-    Icons.savings_outlined,
+  final List<dynamic> _icons = [
+    HugeIcons.strokeRoundedRestaurant01,
+    HugeIcons.strokeRoundedShoppingBag01,
+    HugeIcons.strokeRoundedCar01,
+    HugeIcons.strokeRoundedGameController01,
+    HugeIcons.strokeRoundedUserCheck01,
+    HugeIcons.strokeRoundedHome01,
+    HugeIcons.strokeRoundedAirplane01,
+    HugeIcons.strokeRoundedBook01,
+    HugeIcons.strokeRoundedHealth,
+    HugeIcons.strokeRoundedPiggyBank,
+    HugeIcons.strokeRoundedCoffee02,
+    HugeIcons.strokeRoundedWallet01,
   ];
 
   @override
@@ -210,6 +213,23 @@ class _AddEditJarSheetState extends State<AddEditJarSheet> {
           runSpacing: 10,
           children: List.generate(_icons.length, (index) {
             final isSelected = _selectedIconIndex == index;
+            final icon = _icons[index];
+
+            Widget iconWidget;
+            if (icon is IconData) {
+              iconWidget = Icon(
+                icon,
+                size: 20,
+                color: isSelected ? AppColors.surfaceWhite : AppColors.textPrimary,
+              );
+            } else {
+              iconWidget = HugeIcon(
+                icon: icon,
+                size: 20,
+                color: isSelected ? AppColors.surfaceWhite : AppColors.textPrimary,
+              );
+            }
+
             return GestureDetector(
               onTap: () => setState(() => _selectedIconIndex = index),
               child: Container(
@@ -219,10 +239,8 @@ class _AddEditJarSheetState extends State<AddEditJarSheet> {
                   color: isSelected ? AppColors.inkCta : AppColors.surfaceMuted,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Icon(
-                  _icons[index],
-                  size: 22,
-                  color: isSelected ? AppColors.surfaceWhite : AppColors.textPrimary,
+                child: Center(
+                  child: iconWidget,
                 ),
               ),
             );

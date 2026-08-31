@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
 import '../../../core/utils/currency_formatter.dart';
@@ -116,7 +117,7 @@ class _ShoppingHistoryScreenState extends State<ShoppingHistoryScreen> {
                                   color: AppColors.iconTintBg,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
-                                child: const Icon(Icons.storefront, size: 16, color: AppColors.iconTintFg),
+                                child: const HugeIcon(icon: HugeIcons.strokeRoundedStore01, size: 16, color: AppColors.iconTintFg),
                               ),
                               Text(
                                 '#${index + 1}',
@@ -234,7 +235,7 @@ class _ShoppingHistoryScreenState extends State<ShoppingHistoryScreen> {
               color: AppColors.surfaceMuted,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: const Icon(Icons.shopping_bag_outlined, size: 18, color: AppColors.textPrimary),
+            child: const HugeIcon(icon: HugeIcons.strokeRoundedShoppingBag01, size: 18, color: AppColors.textPrimary),
           ),
           const SizedBox(width: 12),
           Expanded(
