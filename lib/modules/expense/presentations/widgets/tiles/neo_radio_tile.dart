@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import '../../../../../core/theme/app_colors.dart';
 
 class NeoRadioTile<T> extends StatelessWidget {
@@ -6,7 +7,7 @@ class NeoRadioTile<T> extends StatelessWidget {
   final T groupValue;
   final String title;
   final String? subtitle;
-  final IconData? leadingIcon;
+  final dynamic leadingIcon;
   final Widget? trailing;
   final ValueChanged<T> onChanged;
 
@@ -25,6 +26,16 @@ class NeoRadioTile<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget? iconWidget;
+    if (leadingIcon != null) {
+      final color = isSelected ? AppColors.iconTintFg : AppColors.textSecondary;
+      if (leadingIcon is IconData) {
+        iconWidget = Icon(leadingIcon as IconData, size: 20, color: color);
+      } else {
+        iconWidget = HugeIcon(icon: leadingIcon, size: 20, color: color);
+      }
+    }
+
     return GestureDetector(
       onTap: () => onChanged(value),
       child: AnimatedContainer(
@@ -50,18 +61,14 @@ class NeoRadioTile<T> extends StatelessWidget {
         ),
         child: Row(
           children: [
-            if (leadingIcon != null) ...[
+            if (iconWidget != null) ...[
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: isSelected ? AppColors.iconTintBg : AppColors.surfaceMuted,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Icon(
-                  leadingIcon,
-                  size: 20,
-                  color: isSelected ? AppColors.iconTintFg : AppColors.textSecondary,
-                ),
+                child: iconWidget,
               ),
               const SizedBox(width: 14),
             ],

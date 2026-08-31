@@ -5,7 +5,6 @@ import '../../budget/presentations/spending_jars_screen.dart';
 import '../../expense/presentations/expense_list_screen.dart';
 import '../../home/presentations/home_dashboard_screen.dart';
 import '../../profile/presentations/profile_screen.dart';
-import '../../receipt_scanner/presentations/receipt_scanner_screen.dart';
 import '../state/app_state_manager.dart';
 
 class MainNavigationScreen extends StatefulWidget {
@@ -25,8 +24,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       builder: (context, _) {
         final screens = [
           HomeDashboardScreen(state: _state),
-          ExpenseListScreen(state: _state),
           SpendingJarsScreen(state: _state),
+          ExpenseListScreen(state: _state),
           SpendingAnalysisScreen(state: _state),
           ProfileScreen(state: _state),
         ];
@@ -38,10 +37,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ),
           bottomNavigationBar: Container(
             decoration: const BoxDecoration(
-              color: AppColors.surfaceWhite,
+              color: Colors.white,
               border: Border(
                 top: BorderSide(
-                  color: AppColors.borderHairline,
+                  color: Color(0xFFF1F5F9),
                   width: 1.0,
                 ),
               ),
@@ -53,11 +52,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _buildNavItem(0, Icons.home_rounded, Icons.home_outlined, 'Trang chủ'),
-                    _buildNavItem(1, Icons.receipt_long_rounded, Icons.receipt_long_outlined, 'Lịch sử'),
-                    _buildScanCenterButton(),
-                    _buildNavItem(2, Icons.savings_rounded, Icons.savings_outlined, 'Hũ chi tiêu'),
-                    _buildNavItem(3, Icons.insert_chart_rounded, Icons.insert_chart_outlined, 'Báo cáo'),
+                    _buildNavItem(0, Icons.home_filled, Icons.home_outlined, 'Home'),
+                    _buildNavItem(1, Icons.credit_card_rounded, Icons.credit_card_outlined, 'Cards'),
+                    _buildNavItem(2, Icons.access_time_filled_rounded, Icons.access_time_rounded, 'Activity'),
+                    _buildNavItem(3, Icons.insert_chart_rounded, Icons.insert_chart_outlined_rounded, 'Analytics'),
+                    _buildNavItem(4, Icons.settings_rounded, Icons.settings_outlined, 'Settings'),
                   ],
                 ),
               ),
@@ -74,68 +73,37 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     return InkWell(
       onTap: () => _state.setTab(index),
       borderRadius: BorderRadius.circular(16),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              isSelected ? activeIcon : inactiveIcon,
-              color: isSelected ? AppColors.inkCta : AppColors.textTertiary,
-              size: 24,
-            ),
+            if (isSelected && index == 0)
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
+                decoration: BoxDecoration(
+                  color: AppColors.inkCta,
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: const Icon(
+                  Icons.home_filled,
+                  color: Colors.white,
+                  size: 18,
+                ),
+              )
+            else
+              Icon(
+                isSelected ? activeIcon : inactiveIcon,
+                color: isSelected ? AppColors.inkCta : const Color(0xFF94A3B8),
+                size: 22,
+              ),
             const SizedBox(height: 3),
             Text(
               label,
               style: TextStyle(
-                color: isSelected ? AppColors.inkCta : AppColors.textTertiary,
+                color: isSelected ? AppColors.inkCta : const Color(0xFF94A3B8),
                 fontSize: 11,
                 fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildScanCenterButton() {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => ReceiptScannerScreen(state: _state),
-          ),
-        );
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-        decoration: BoxDecoration(
-          color: AppColors.inkCta,
-          borderRadius: BorderRadius.circular(24),
-          boxShadow: const [
-            BoxShadow(
-              color: Color(0x330B0E17),
-              offset: Offset(0, 4),
-              blurRadius: 12,
-            ),
-          ],
-        ),
-        child: const Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              Icons.document_scanner_rounded,
-              color: AppColors.surfaceWhite,
-              size: 18,
-            ),
-            SizedBox(width: 6),
-            Text(
-              'Quét OCR',
-              style: TextStyle(
-                color: AppColors.surfaceWhite,
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
               ),
             ),
           ],

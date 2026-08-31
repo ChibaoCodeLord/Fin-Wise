@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/app_colors.dart';
 
@@ -9,7 +10,7 @@ class SpendingJarModel {
   final double spent;
   final JarPeriod period;
   final List<String> linkedCategoryIds;
-  final IconData icon;
+  final dynamic icon;
   final Color backgroundColor;
   final Color foregroundColor;
 
@@ -32,7 +33,7 @@ class SpendingJarModel {
     double? spent,
     JarPeriod? period,
     List<String>? linkedCategoryIds,
-    IconData? icon,
+    dynamic icon,
     Color? backgroundColor,
     Color? foregroundColor,
   }) {
@@ -57,7 +58,7 @@ class SpendingJarModel {
           spent: 1450000.0,
           period: JarPeriod.monthly,
           linkedCategoryIds: ['food', 'groceries'],
-          icon: Icons.fastfood_outlined,
+          icon: HugeIcons.strokeRoundedRestaurant01,
           backgroundColor: AppColors.tintFoodBg,
           foregroundColor: AppColors.tintFoodFg,
         ),
@@ -68,7 +69,7 @@ class SpendingJarModel {
           spent: 1250000.0,
           period: JarPeriod.monthly,
           linkedCategoryIds: ['shopping'],
-          icon: Icons.shopping_bag_outlined,
+          icon: HugeIcons.strokeRoundedShoppingBag01,
           backgroundColor: AppColors.tintShoppingBg,
           foregroundColor: AppColors.tintShoppingFg,
         ),
@@ -79,7 +80,7 @@ class SpendingJarModel {
           spent: 420000.0,
           period: JarPeriod.monthly,
           linkedCategoryIds: ['transport'],
-          icon: Icons.directions_car_outlined,
+          icon: HugeIcons.strokeRoundedCar01,
           backgroundColor: AppColors.tintTransportBg,
           foregroundColor: AppColors.tintTransportFg,
         ),
@@ -90,7 +91,7 @@ class SpendingJarModel {
           spent: 380000.0,
           period: JarPeriod.monthly,
           linkedCategoryIds: ['entertainment'],
-          icon: Icons.sports_esports_outlined,
+          icon: HugeIcons.strokeRoundedGameController01,
           backgroundColor: AppColors.tintEntertainmentBg,
           foregroundColor: AppColors.tintEntertainmentFg,
         ),
@@ -101,7 +102,7 @@ class SpendingJarModel {
           spent: 250000.0,
           period: JarPeriod.monthly,
           linkedCategoryIds: ['health', 'other'],
-          icon: Icons.face_retouching_natural_outlined,
+          icon: HugeIcons.strokeRoundedUserCheck01,
           backgroundColor: AppColors.tintHealthBg,
           foregroundColor: AppColors.tintHealthFg,
         ),

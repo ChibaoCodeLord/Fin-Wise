@@ -7,7 +7,7 @@ class NeoTransactionTile extends StatelessWidget {
   final String title;
   final String subtitle;
   final double amount;
-  final IconData icon;
+  final dynamic icon;
   final Color? iconBgColor;
   final Color? iconFgColor;
   final Color? iconBg;

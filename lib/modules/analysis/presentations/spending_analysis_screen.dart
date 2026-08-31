@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
@@ -61,7 +62,7 @@ class _SpendingAnalysisScreenState extends State<SpendingAnalysisScreen> {
                       title: 'Tổng chi tiêu',
                       value: CurrencyFormatter.formatVND(totalSpent),
                       subtitle: 'Tháng 8/2026',
-                      icon: Icons.payments_outlined,
+                      icon: HugeIcons.strokeRoundedWallet01,
                       iconBg: AppColors.iconTintBg,
                       iconFg: AppColors.iconTintFg,
                     ),
@@ -72,7 +73,7 @@ class _SpendingAnalysisScreenState extends State<SpendingAnalysisScreen> {
                       title: 'Trung bình/ngày',
                       value: CurrencyFormatter.formatVND(avgPerDay),
                       subtitle: 'Dựa trên 30 ngày',
-                      icon: Icons.calendar_today_outlined,
+                      icon: HugeIcons.strokeRoundedCalendar01,
                       iconBg: const Color(0xFFF0FDF4),
                       iconFg: const Color(0xFF16A34A),
                     ),
@@ -307,7 +308,7 @@ class _SpendingAnalysisScreenState extends State<SpendingAnalysisScreen> {
                                 color: AppColors.surfaceMuted,
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              child: const Icon(Icons.storefront_outlined, size: 18, color: AppColors.textPrimary),
+                              child: const HugeIcon(icon: HugeIcons.strokeRoundedStore01, size: 18, color: AppColors.textPrimary),
                             ),
                             const SizedBox(width: 12),
                             Expanded(
@@ -346,7 +347,7 @@ class _SpendingAnalysisScreenState extends State<SpendingAnalysisScreen> {
     required String title,
     required String value,
     required String subtitle,
-    required IconData icon,
+    required dynamic icon,
     required Color iconBg,
     required Color iconFg,
   }) {
