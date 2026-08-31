@@ -3,12 +3,26 @@ import 'package:flutter/material.dart';
 /// FinWise Design Tokens based on FinWise_Design_Style_Plan.md
 class AppColors {
   // Hero Gradient
-  static const Color gradientTop = Color(0xFF4C7DF5); // Blue bright
-  static const Color gradientBottom = Color(0xFF10193B); // Deep navy near-black
+  static const Color gradientTop = Color(0xFF1D4ED8); // Vibrant Royal Blue
+  static const Color gradientMid = Color(0xFF3B82F6); // Cobalt Blue
+  static const Color gradientBottom = Color(0xFF60A5FA); // Sky Blue
   static const LinearGradient heroGradient = LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-    colors: [gradientTop, gradientBottom],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [gradientTop, gradientMid, gradientBottom],
+  );
+
+  static const LinearGradient royalBlueGradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xFF1E40AF), // Deep Blue Top
+      Color(0xFF2563EB), // Royal Blue
+      Color(0xFF3B82F6), // Vibrant Blue
+      Color(0xFF60A5FA), // Light Blue
+      Color(0xFFE0EEFE), // Soft transition to white
+    ],
+    stops: [0.0, 0.25, 0.55, 0.8, 1.0],
   );
 
   static const LinearGradient cardAccentGradient = LinearGradient(
